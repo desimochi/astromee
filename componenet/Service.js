@@ -18,14 +18,15 @@ const zodiacSigns = [
 
 export default function AstrologyPrediction() {
   return (
-    <section className="text-center py-8">
-      <h2 className="text-3xl font-bold mb-2 mt-6">Todays Astrology Prediction</h2>
-      <div className="max-w-[240px] mx-auto mb-8">
-        <hr className="border-t border-gray-900 border-dotted" />
+    <section className="max-w-7xl text-center mx-auto py-8">
+      <h2 className="text-4xl font-bold mb-2 mt-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 bg-clip-text text-transparent">Todays Astrology Prediction</h2>
+      <div className=" mb-8">
+        <hr className="max-w-[240px] mx-auto border-t border-gray-900 border-dotted" />
+        
     </div>
-      <div className="grid grid-cols-2 mt-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-2 gap-x-4 px-4 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 mt-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-2 gap-x-4 px-4 max-w-7xl mx-auto">
         {zodiacSigns.map((sign) => (
-          <div key={sign.name} className="flex flex-col items-center hover:bg-yellow-200 p-8 transition-colors rounded-md hover:shadow-lg ">
+          <div key={sign.name} className="flex flex-col items-center hover:bg-gradient-to-r from-yellow-400 via-orange-100 to-yellow-400 p-8 transition-colors rounded-md hover:shadow-lg ">
             <Image
               src={sign.icon}
               alt={sign.name}

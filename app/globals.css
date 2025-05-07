@@ -37,30 +37,94 @@ body {
   animation: twinkle 1s infinite ease-in-out;
 }
 @keyframes rotatemoon {
-  0%, 100% {
+  0% {
     transform: rotate(0deg);
-    opacity: 1;
+  
   }
-  50% {
-    transform: rotate(180deg);
-    opacity: 0.7;
+  100% {
+    transform: rotate(360deg);
+   
   }
+ 
 }
 
 .animate-rotatemoon {
-  animation: rotatemoon 3s infinite ease-in-out;
+  animation: rotatemoon 9s infinite linear;
 }
-@keyframes shoot {
+
+@keyframes orbit {
   0% {
-    transform: 'translateX(-100px) translateY(0)',
-    
+    transform: rotate(0deg);
+  
   }
   100% {
-    transform: 'translateX(100vw) translateY(100vh)',
+    transform: rotate(360deg);
+   
+  }
+ 
+}
+
+.animate-orbit {
+  animation: orbit 20S linear infinite;
+}
+@keyframes reorbit {
+  0% {
+    transform: rotate(360deg);
   
+  }
+  100% {
+    transform: rotate(0deg);
+   
+  }
+ 
+}
+
+.animate-reorbit {
+  animation: reorbit 20S linear infinite;
+}
+@keyframes star {
+  0% {
+    top: 0%;
+    left: 0%;
+  }
+  25%{
+    top: 0%;
+    left: 100%;
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+  }
+  50% {
+    top: 100%;
+    left: 0%;
+  }
+  100% {
+    top: 0%;
+    left: 0%;
   }
 }
 
+
+.animate-star {
+  animation: 'star 1.5s ease-in-out infinite';
+}
+@keyframes shootingstar {
+  0% {
+    transform: translateX(-100px) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(100vh);
+    opacity: 0;
+  }
+}
+
+
 .animate-shoot {
-  shoot: 'shoot 1.5s ease-in-out infinite',
+  animation: 'shootingstar 1.5s ease-in-out infinite';
 }

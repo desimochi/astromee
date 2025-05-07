@@ -22,6 +22,8 @@ export default function MoonScrollAnimation() {
         start: 'top top',
         end: '+=1000',
         pin: true,
+        anticipatePin: 1,
+        scrub: true,
       });
 
       // Animate the moon scale and position on scroll
@@ -75,7 +77,7 @@ export default function MoonScrollAnimation() {
         {
           opacity: 1,
           duration: 1.5,
-          ease: 'power2.out',
+          ease: 'power3.inOut',
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 85%',
@@ -96,7 +98,7 @@ export default function MoonScrollAnimation() {
       {/* Text */}
       <h1
         ref={textRef}
-        className="text-5xl md:text-7xl font-bold relative z-10 text-center opacity-0"
+        className="text-5xl md:text-7xl font-bold relative z-10 text-center opacity-0 bg-gradient-to-tl from-slate-800 via-yellow-500 to-zinc-400 bg-clip-text text-transparent"
       >
         Astro Mee
       </h1>
@@ -110,7 +112,7 @@ export default function MoonScrollAnimation() {
           ref={moonImgRef}
           src="/moon.png"
           alt="Moon"
-          className="w-full h-full object-cover rounded-full transition-all duration-300 shadow-lg rotatemoon opacity-0"
+          className="w-full h-full object-cover rounded-full transition-all duration-300 shadow-lg animate-rotatemoon opacity-0"
         />
       </div>
 

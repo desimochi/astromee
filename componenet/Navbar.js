@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react';
 import Link from 'next/link';
+import { ChevronsDown } from './icon/Down';
 
 const FloatingNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ const FloatingNavbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50">
-      <div className="max-w-6xl mx-auto px-16 py-4 h-full w-full bg-black rounded-full mt-3 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-40 border border-gray-600 shadow-lg">
+      <div className="max-w-6xl mx-auto px-16 py-4 mt-4 rounded-full h-full w-full bg-yellow-500/70 bg-clip-padding backdrop-filter backdrop-blur-sm backdrop-saturate-150 backdrop-contrast-75  border border-yellow-600 shadow-[49px_40px_216px_0px_rgba(0,_0,_0,_0.2)]">
         <div className="flex items-center justify-between">
           <Link href="/">
             <span className="text-white text-2xl font-bold">AstroMee</span>
@@ -21,7 +22,7 @@ const FloatingNavbar = () => {
               <span className="text-white">Home</span>
             </Link>
             <div className="relative">
-              <button className="text-white">Horoscope ▽</button>
+              <button className="text-white flex items-center">Horoscope ▽</button>
               <div className="absolute hidden bg-white shadow-md rounded-md top-8 left-0 w-48">
                 <Link href="/service1">
                   <span className="block px-4 py-2 text-black">Daily Horoscope</span>
@@ -89,7 +90,7 @@ const FloatingNavbar = () => {
       <div
         className={`${
           isMenuOpen ? 'block' : 'hidden'
-        } md:hidden bg-blue-500 text-white space-y-4 py-4 px-6`}
+        } md:hidden bg-blue-500 text-white flex flex-col space-y-4 py-4 px-6 rounded-lg`}
       >
         <Link href="/home">
           <span onClick={toggleMenu}>Home</span>
