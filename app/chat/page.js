@@ -3,7 +3,7 @@
 
 import dynamic from 'next/dynamic';
 
-const ChatComponent = dynamic(() => import('@/components/ChatComponent'), {
+const ChatComponent = dynamic(() => import('@/componenet/ChatClient'), {
   ssr: false,
 });
 
