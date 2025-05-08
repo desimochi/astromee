@@ -103,7 +103,7 @@ export default function Page(){
             <p className="text-yellow-300"></p>
             {result.NameNumberPrediction.Planet && (
               <Image
-                src={`/${result.NameNumberPrediction.Planet}.webp`}
+                src={`/image/${result.NameNumberPrediction.Planet}.png`}
                 height={250}
                 width={250}
                 alt={`${result.NameNumberPrediction.Planet}`}
