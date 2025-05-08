@@ -38,7 +38,7 @@ const FloatingNavbar = () => {
             <Link href="/contact">
               <span className="text-white">Panchang</span>
             </Link>
-            <Link href="/contact">
+            <Link href="/numerology">
               <span className="text-white">Numerology </span>
             </Link>
             <div className="relative">
