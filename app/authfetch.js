@@ -1,6 +1,6 @@
 
 
-const API_BASE_URL = "https://vedastro-webapi.azurewebsites.net/api/"; // Replace with your API base URL
+const API_BASE_URL = "https://webapi.vedastro.org/api/"; // Replace with your API base URL
 
 export async function authFetch(endpoint, options = {}) {
 

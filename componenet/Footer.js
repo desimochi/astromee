@@ -1,3 +1,4 @@
+import { FacebookIcon, InstagramIcon, TwitchIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,18 +7,18 @@ export default function Footer() {
     <footer className="bg-[#2e2e2e] text-white px-6 py-10">
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div>
-          <Image src="/images/logo-footer.png" alt="AstroMee Logo" width={100} height={100} />
-          <p className="mt-4 font-semibold">AstroMee Mobile Apps</p>
+          <Image src="/astromee-logo-white.png" alt="AstroMee Logo" width={200} height={100} />
+          <p className="mt-8 font-semibold">AstroMee Mobile Apps</p>
           <div className="flex gap-2 mt-2">
             <Image src="/images/google-play.png" alt="Google Play" width={120} height={40} />
             <Image src="/images/app-store.png" alt="App Store" width={120} height={40} />
           </div>
           <p className="mt-4 font-semibold">Follow us on</p>
-          <div className="flex gap-2 mt-2">
-            <Image src="/icons/facebook.svg" alt="Facebook" width={30} height={30} className="bg-white p-1 rounded" />
-            <Image src="/icons/youtube.svg" alt="YouTube" width={30} height={30} className="bg-white p-1 rounded" />
-            <Image src="/icons/instagram.svg" alt="Instagram" width={30} height={30} className="bg-white p-1 rounded" />
-            <Image src="/icons/twitter.svg" alt="Twitter" width={30} height={30} className="bg-white p-1 rounded" />
+          <div className="flex gap-3 mt-2 items-center">
+           <span className="bg-yellow-50 text-yellow-700 p-2 rounded-sm cursor-pointer hover:text-yellow-100 hover:bg-yellow-700 transition-colors"> <FacebookIcon className="h-5 w-5" /></span>
+           <span className="bg-yellow-50 text-yellow-700 p-2 rounded-sm cursor-pointer hover:text-yellow-100 hover:bg-yellow-700 transition-colors"> <InstagramIcon className="h-5 w-5" /></span>
+           <span className="bg-yellow-50 text-yellow-700 p-2 rounded-sm cursor-pointer hover:text-yellow-100 hover:bg-yellow-700 transition-colors"> <YoutubeIcon className="h-5 w-5" /></span>
+          <span className="bg-yellow-50 text-yellow-700 p-2 rounded-sm cursor-pointer hover:text-yellow-100 hover:bg-yellow-700 transition-colors">  <TwitterIcon className="h-5 w-5" /></span>
           </div>
         </div>
 

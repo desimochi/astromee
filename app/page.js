@@ -11,7 +11,7 @@ export default function Home() {
   <AstrologyPrediction />
   <hr className="border-t border-gray-900 border-dotted" />
   <AstrologyServices />
-  <Footer/>
+  
   </>
   ) 
 }

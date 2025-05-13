@@ -1,9 +1,9 @@
 "use client";
 import { useState } from 'react';
-import Link from 'next/link';
 import BottomNav from './BottamNav';
 import Image from 'next/image';
-
+import { Calendar, Calendar1, FlameIcon, PaintBucketIcon } from 'lucide-react';
+import NavLinks from './NavLink';
 const FloatingNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
@@ -18,35 +18,47 @@ const FloatingNavbar = () => {
 
   return (
     <>
-    <nav className="fixed top-0 left-0 w-full z-900 hidden sm:block">
-      <div className="max-w-6xl mx-auto px-6 py-4 sm:mt-4 sm:rounded-full bg-white/90 backdrop-blur-sm border border-gray-600 shadow-xl">
+    <nav className="fixed top-0 left-0 w-full z-900 hidden sm:block  gothic-a1-text">
+      <div className="max-w-7xl mx-auto px-6 py-4 sm:mt-4 sm:rounded-full bg-white/90 backdrop-blur-sm border border-gray-600 shadow-xl">
         <div className="flex items-center justify-between">
-          <Link href="/">
-            <Image src={"/astromee-logo.png"} alt='astromee-logo' height={150} width={150} />
-          </Link>
+          <NavLinks href="/">
+            <Image src={"/astromee-logo.png"} alt='astromee-logo' height={200} width={200} />
+          </NavLinks>
           <div className="hidden md:flex space-x-6">
-            <Link href="/"><span className="text-gray-700 hover:text-yellow-600">Home</span></Link>
+            <NavLinks href="/">Home</NavLinks>
             {/* <div className="relative group">
               <button className="text-gray-700 hover:text-yellow-600">Horoscope ▽</button>
               <div className="absolute hidden group-hover:block bg-white shadow-md rounded-md top-8 left-0 w-48">
-                <Link href="/service1"><span className="block px-4 py-2 text-black hover:text-yellow-600">Daily Horoscope</span></Link>
-                <Link href="/service2"><span className="block px-4 py-2 text-black hover:text-yellow-600">Yearly Horoscope</span></Link>
+                <NavLinks href="/service1"><span className="block px-4 py-2 text-black hover:text-yellow-600">Daily Horoscope</span></NavLinks>
+                <NavLinks href="/service2"><span className="block px-4 py-2 text-black hover:text-yellow-600">Yearly Horoscope</span></NavLinks>
               </div>
             </div> */}
  
-            <Link href="/numerology"><span className="text-gray-700 hover:text-yellow-600">Numerology</span></Link>
-            {/* <div className="relative group">
-              <button className="text-gray-700 hover:text-yellow-600">Free Calculators ▽</button>
-              <div className="absolute hidden group-hover:block bg-white shadow-md rounded-md top-8 left-0 w-48">
-                <Link href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Flame Calculator</span></Link>
-                <Link href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Lucky Rudraksh</span></Link>
+            <NavLinks href="/numerology">Numerology</NavLinks>
+            <div className="relative group">
+              <button className="text-gray-700 hover:text-yellow-600">Horoscope ▽</button>
+              <div className="absolute hidden group-hover:block space-y-2 ">
+                <div className='bg-white shadow-md rounded-md top-10 left-0 w-48 p-3'>
+                <NavLinks href="/horoscope/daily-horoscope"> <span className='flex items-center gap-1'><Calendar className='h-4 w-4'/> Today Horoscope</span></NavLinks>
+                <NavLinks href="/horoscope/weekly-horoscope"> <span className='flex items-center gap-1 mt-2'><Calendar1 className='h-4 w-4'/> Weekly Horoscope</span></NavLinks>
+                <NavLinks href="/horoscope/monthly-horoscope"> <span className='flex items-center gap-1 mt-2'><Calendar1 className='h-4 w-4'/> Monthly Horoscope</span></NavLinks>
+                </div>
               </div>
             </div>
             <div className="relative group">
+              <button className="text-gray-700 hover:text-yellow-600">Free Calculators ▽</button>
+              <div className="absolute hidden group-hover:block ">
+                <div className='bg-white shadow-md rounded-md top-10 left-0 w-48 p-3'>
+                <NavLinks href="/flame-calculator"> <span className='flex items-center'><FlameIcon className='h-4 w-4'/> Flame Calculator</span></NavLinks>
+                <NavLinks href="/lucky-color"> <span className='flex items-center mt-2'><PaintBucketIcon className='h-4 w-4'/> Lucky Color Calculator</span></NavLinks>
+                </div>
+              </div>
+            </div>
+            {/* <div className="relative group">
               <button className="text-gray-700 hover:text-yellow-600">Free Readings ▽</button>
               <div className="absolute hidden group-hover:block bg-white shadow-md rounded-md top-8 left-0 w-48">
-                <Link href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Palm Readings</span></Link>
-                <Link href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Baby Name</span></Link>
+                <NavLinks href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Palm Readings</span></NavLinks>
+                <NavLinks href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Baby Name</span></NavLinks>
               </div>
             </div> */}
           </div>

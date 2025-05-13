@@ -10,13 +10,13 @@ const BottomNav = () => {
   };
 
   return (
-    <div className="fixed bottom-0 w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white z-900 block sm:hidden">
+    <div className="fixed bottom-0 w-full bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 text-white z-900 block sm:hidden">
       {/* Center Curve */}
       <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-white/80 rounded-full  flex items-center justify-center z-10">
         <div className="w-10 h-10 bg-yellow-500 rounded-full"></div>
       </div>
 
-      <div className="flex justify-around items-center py-3 relative z-0">
+      <div className="flex justify-between items-center py-3 px-2 relative z-0">
         {/* Menu Items */}
         <div className="flex flex-col items-center" onClick={() => toggleMenu('models')}>
           <User className="h-6 w-6" />

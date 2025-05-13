@@ -4,24 +4,24 @@ import Image from "next/image";
 // components/GradientHero.js
 export default function GradientHero() {
     return (
-      <div className="relative min-h-[120vh]  sm:min-h-[100vh] bg-white overflow-hidden flex flex-col sm:flex-row items-center justify-center text-white">
+      <div className="relative min-h-[120vh]  sm:min-h-[100vh] bg-white  gothic-a1-text overflow-hidden flex flex-col sm:flex-row items-center justify-center text-white">
         {/* Planets orbiting */}
         <div className=" w-full sm:w-1/2">
         <div className="z-40 text-center sm:text-left w-full px-4 sm:px-40">
           <div className="inline-block px-4 py-2 mb-3 border border-yellow-500 rounded-full text-sm bg-yellow-500/50 backdrop-blur-sm">
            <span className="text-black">Most Trusted Astrology Website!</span>
           </div>
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-black">
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-black gothic-a1-text">
   Astrology {` `}
   <span className="inline-block text-yellow-400 ">For </span>{` `}
   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 bg-clip-text text-transparent">
     Mee
   </span>
 </h1>
-          <p className="mt-6 text-lg text-gray-600">
+          <p className="mt-6 text-lg text-gray-600  gothic-a1-text">
           Unlock the mysteries of your future with AI astrology—where science meets the stars.
           </p>
-          <p className="mt-2 text-gray-400">
+          <p className="mt-2 text-gray-400 gothic-a1-text">
           Personalized insights guiding your journey through the cosmos.
           </p>
         </div>

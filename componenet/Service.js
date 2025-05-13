@@ -18,8 +18,8 @@ const zodiacSigns = [
 
 export default function AstrologyPrediction() {
   return (
-    <section className="max-w-7xl text-center mx-auto py-8">
-      <h2 className="text-4xl font-bold mb-2 mt-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 bg-clip-text text-transparent">Todays Astrology Prediction</h2>
+    <section className="max-w-7xl text-center mx-auto py-8 gothic-a1-text">
+      <h2 className="text-4xl font-bold mb-2 mt-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 bg-clip-text text-transparent">Todays ASTROMEE Prediction</h2>
       <div className=" mb-8">
         <hr className="max-w-[240px] mx-auto border-t border-gray-900 border-dotted" />
         
