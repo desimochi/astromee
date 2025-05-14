@@ -1,5 +1,6 @@
 'use client'; // if using App Router
 
+import { PinContainer } from '@/components/ui/3d-pin';
 import { useState } from 'react';
 
 const zodiacColors = {
@@ -103,7 +104,7 @@ export default function Home() {
         />
         <button
           onClick={calculateLuckyColor}
-          className="bg-yellow-700 text-white px-4 py-2 rounded hover:bg-yellow-600"
+          className="bg-yellow-700 text-whi px-4 py-2 rounded hover:bg-yellow-600"
         >
           Get Lucky Color
         </button>
@@ -113,6 +114,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      <PinContainer />
     </div>
   );
 }

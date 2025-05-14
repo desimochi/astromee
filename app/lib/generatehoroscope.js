@@ -1,23 +1,31 @@
 'use server'
 
-import { connectToDatabase } from '@/app/lib/mongodb'
 import { revalidatePath } from 'next/cache'
-
+import { connectToDatabase } from './mongodb'
 const zodiacSigns = [
   'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo',
-  'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces',
+  'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces'
 ]
 
 export async function generateDailyHoroscopes() {
   try {
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
+    const now = new Date()
+
+    // Force IST (UTC+5:30)
+    const IST_OFFSET = 5.5 * 60 * 60 * 1000
+    const istNow = new Date(now.getTime() + IST_OFFSET)
+    istNow.setHours(0, 0, 0, 0)
+
+    const tomorrowIST = new Date(istNow)
+    tomorrowIST.setDate(istNow.getDate() + 1)
 
     const db = await connectToDatabase()
     const collection = db.collection('daily_horoscopes')
 
-    // Check if today's data already exists
-    const existing = await collection.findOne({ date: { $gte: today } })
+    // Check if today's data already exists in IST range
+    const existing = await collection.findOne({
+      date: { $gte: istNow, $lt: tomorrowIST }
+    })
 
     if (existing) {
       return {
@@ -38,35 +46,29 @@ export async function generateDailyHoroscopes() {
 
       const data = await res.json()
       const content = data?.data?.horoscope_data || 'No content'
-   0
 
-      horoscopes.push({
-        sign,
-        content,
-      })
+      horoscopes.push({ sign, content })
     }
 
-
-
-
-    // Save the full daily data as a single document
+    // Insert today's horoscope with IST date
     const result = await collection.insertOne({
-      date: new Date(),
-      horoscopes, // array of { sign, content }
+      date: istNow,
+      horoscopes,
     })
 
-    revalidatePath('/daily-horoscope')
+    // Invalidate cache for the relevant page
+    revalidatePath('/daily-horoscope') // 🔁 change this if your route is different
 
     return {
       _id: result.insertedId.toString(),
-      date: today,
+      date: istNow,
       horoscopes,
     }
   } catch (error) {
     console.error('Error generating daily horoscopes:', error)
     return { error: 'Failed to generate horoscopes' }
   }
-} 
+}
 
 export async function generateWeeklyHoroscopes() {
   try {
@@ -178,7 +180,7 @@ export async function generateMonthlyHoroscopes() {
       horoscopes, // array of { sign, content }
     })
 
-    revalidatePath('/horoscope')
+    revalidatePath('/weekly-horoscope')
 
     return {
       _id: result.insertedId.toString(),
