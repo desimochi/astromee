@@ -7,24 +7,31 @@ const zodiacSigns = [
   'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces'
 ]
 
+
 export async function generateDailyHoroscopes() {
   try {
     const now = new Date()
 
-    // Force IST (UTC+5:30)
-    const IST_OFFSET = 5.5 * 60 * 60 * 1000
-    const istNow = new Date(now.getTime() + IST_OFFSET)
-    istNow.setHours(0, 0, 0, 0)
+    // Convert current UTC time to IST
+    const utc = now.getTime() + now.getTimezoneOffset() * 60000
+    const istDate = new Date(utc + 5.5 * 60 * 60 * 1000)
 
-    const tomorrowIST = new Date(istNow)
-    tomorrowIST.setDate(istNow.getDate() + 1)
+    // Set IST time to start of the day (midnight)
+    istDate.setHours(0, 0, 0, 0)
+
+    // Convert IST midnight to UTC for DB use
+    const istMidnightUTC = new Date(istDate.getTime() - 5.5 * 60 * 60 * 1000)
+    const nextISTMidnightUTC = new Date(istMidnightUTC.getTime() + 24 * 60 * 60 * 1000)
 
     const db = await connectToDatabase()
     const collection = db.collection('daily_horoscopes')
 
-    // Check if today's data already exists in IST range
+    // Check if horoscope for current IST date already exists (using UTC timestamps)
     const existing = await collection.findOne({
-      date: { $gte: istNow }
+      date: {
+        $gte: istMidnightUTC,
+        $lt: nextISTMidnightUTC
+      }
     })
 
     if (existing) {
@@ -37,10 +44,12 @@ export async function generateDailyHoroscopes() {
     const horoscopes = []
 
     for (const sign of zodiacSigns) {
-      const res = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${sign}&day=TODAY`)
+      const res = await fetch(
+        `https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${sign}&day=TODAY`
+      )
 
       if (!res.ok) {
-        console.error(`Failed to fetch horoscope for ${sign}`)
+        console.error(`❌ Failed to fetch horoscope for ${sign}`)
         continue
       }
 
@@ -50,22 +59,23 @@ export async function generateDailyHoroscopes() {
       horoscopes.push({ sign, content })
     }
 
-    // Insert today's horoscope with IST date
+    // Insert today's horoscope with UTC-based date for IST midnight
     const result = await collection.insertOne({
-      date: istNow,
+      date: istMidnightUTC,
       horoscopes,
     })
 
-    // Invalidate cache for the relevant page
-    revalidatePath('/daily-horoscope') // 🔁 change this if your route is different
+    // Revalidate cache for your public page
+    revalidatePath('/daily-horoscope')
 
     return {
       _id: result.insertedId.toString(),
-      date: istNow,
+      date: istMidnightUTC,
       horoscopes,
     }
+
   } catch (error) {
-    console.error('Error generating daily horoscopes:', error)
+    console.error('❌ Error generating daily horoscopes:', error)
     return { error: 'Failed to generate horoscopes' }
   }
 }
