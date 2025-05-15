@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 const zodiacSigns = [
-  { name: "Aries", icon: "/aries.png" },
+  { name: "Aries", icon: "/arise.svg" },
   { name: "Taurus", icon: "/taurus.png" },
   { name: "Gemini", icon: "/gemini.png" },
   { name: "Cancer", icon: "/cancer.png" },
@@ -26,15 +26,15 @@ export default function AstrologyPrediction() {
     </div>
       <div className="grid grid-cols-2 mt-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-2 gap-x-4 px-4 max-w-7xl mx-auto">
         {zodiacSigns.map((sign) => (
-          <div key={sign.name} className="flex flex-col items-center hover:bg-gradient-to-r from-yellow-400 via-orange-100 to-yellow-400 p-8 transition-colors rounded-md hover:shadow-lg ">
+          <div key={sign.name} className="flex flex-col items-center p-8 transition-colors rounded-md ">
             <Image
               src={sign.icon}
               alt={sign.name}
-              width={48}
-              height={48}
-              className="mb-2"
+              width={112}
+              height={112}
+              className="mb-2 hover:scale-110 transition-transform "
             />
-            <p className=" text-gray-700">{sign.name}</p>
+            <p className=" text-gray-800 text-lg font-bold">{sign.name}</p>
           </div>
         ))}
       </div>

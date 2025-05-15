@@ -24,7 +24,7 @@ export async function generateDailyHoroscopes() {
 
     // Check if today's data already exists in IST range
     const existing = await collection.findOne({
-      date: { $gte: istNow, $lt: tomorrowIST }
+      date: { $gte: istNow }
     })
 
     if (existing) {
