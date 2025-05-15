@@ -8,25 +8,29 @@ const zodiacSigns = [
 ]
 
 
+
+// Helper to get start of IST day in UTC
+function getISTMidnightUTC(date = new Date()) {
+  // Get UTC + 5.5 hours → IST
+  const utcTime = date.getTime() + (5.5 * 60 * 60 * 1000)
+  const istDate = new Date(utcTime)
+
+  // Zero time in IST
+  istDate.setHours(0, 0, 0, 0)
+
+  // Convert back to UTC
+  return new Date(istDate.getTime() - (5.5 * 60 * 60 * 1000))
+}
+
 export async function generateDailyHoroscopes() {
   try {
-    const now = new Date()
-
-    // Convert current UTC time to IST
-    const utc = now.getTime() + now.getTimezoneOffset() * 60000
-    const istDate = new Date(utc + 5.5 * 60 * 60 * 1000)
-
-    // Set IST time to start of the day (midnight)
-    istDate.setHours(0, 0, 0, 0)
-
-    // Convert IST midnight to UTC for DB use
-    const istMidnightUTC = new Date(istDate.getTime() - 5.5 * 60 * 60 * 1000)
+    const istMidnightUTC = getISTMidnightUTC()
     const nextISTMidnightUTC = new Date(istMidnightUTC.getTime() + 24 * 60 * 60 * 1000)
 
     const db = await connectToDatabase()
     const collection = db.collection('daily_horoscopes')
 
-    // Check if horoscope for current IST date already exists (using UTC timestamps)
+    // Check if today's IST horoscope already exists
     const existing = await collection.findOne({
       date: {
         $gte: istMidnightUTC,
@@ -55,17 +59,14 @@ export async function generateDailyHoroscopes() {
 
       const data = await res.json()
       const content = data?.data?.horoscope_data || 'No content'
-
       horoscopes.push({ sign, content })
     }
 
-    // Insert today's horoscope with UTC-based date for IST midnight
     const result = await collection.insertOne({
       date: istMidnightUTC,
       horoscopes,
     })
 
-    // Revalidate cache for your public page
     revalidatePath('/daily-horoscope')
 
     return {
