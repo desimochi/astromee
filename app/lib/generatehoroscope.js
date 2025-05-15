@@ -7,36 +7,28 @@ const zodiacSigns = [
   'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces'
 ]
 
+// Helper to format date to dd/mm/yyyy (IST)
+function getISTFormattedDate() {
+  const now = new Date()
+  const IST_OFFSET = 5.5 * 60 * 60 * 1000
+  const istNow = new Date(now.getTime() + IST_OFFSET)
 
+  const dd = String(istNow.getDate()).padStart(2, '0')
+  const mm = String(istNow.getMonth() + 1).padStart(2, '0')
+  const yyyy = istNow.getFullYear()
 
-// Helper to get start of IST day in UTC
-function getISTMidnightUTC(date = new Date()) {
-  // Get UTC + 5.5 hours → IST
-  const utcTime = date.getTime() + (5.5 * 60 * 60 * 1000)
-  const istDate = new Date(utcTime)
-
-  // Zero time in IST
-  istDate.setHours(0, 0, 0, 0)
-
-  // Convert back to UTC
-  return new Date(istDate.getTime() - (5.5 * 60 * 60 * 1000))
+  return `${dd}/${mm}/${yyyy}` // e.g., "15/05/2025"
 }
 
 export async function generateDailyHoroscopes() {
   try {
-    const istMidnightUTC = getISTMidnightUTC()
-    const nextISTMidnightUTC = new Date(istMidnightUTC.getTime() + 24 * 60 * 60 * 1000)
+    const formattedDate = getISTFormattedDate()
 
     const db = await connectToDatabase()
     const collection = db.collection('daily_horoscopes')
 
-    // Check if today's IST horoscope already exists
-    const existing = await collection.findOne({
-      date: {
-        $gte: istMidnightUTC,
-        $lt: nextISTMidnightUTC
-      }
-    })
+    // Check if data already exists for this date
+    const existing = await collection.findOne({ date: formattedDate })
 
     if (existing) {
       return {
@@ -48,38 +40,37 @@ export async function generateDailyHoroscopes() {
     const horoscopes = []
 
     for (const sign of zodiacSigns) {
-      const res = await fetch(
-        `https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${sign}&day=TODAY`
-      )
+      const res = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${sign}&day=TODAY`)
 
       if (!res.ok) {
-        console.error(`❌ Failed to fetch horoscope for ${sign}`)
+        console.error(`Failed to fetch horoscope for ${sign}`)
         continue
       }
 
       const data = await res.json()
       const content = data?.data?.horoscope_data || 'No content'
+
       horoscopes.push({ sign, content })
     }
 
     const result = await collection.insertOne({
-      date: istMidnightUTC,
+      date: formattedDate,
       horoscopes,
     })
 
-    revalidatePath('/daily-horoscope')
+    revalidatePath('/daily-horoscope') // Update this if needed
 
     return {
       _id: result.insertedId.toString(),
-      date: istMidnightUTC,
+      date: formattedDate,
       horoscopes,
     }
-
   } catch (error) {
-    console.error('❌ Error generating daily horoscopes:', error)
+    console.error('Error generating daily horoscopes:', error)
     return { error: 'Failed to generate horoscopes' }
   }
 }
+
 
 export async function generateWeeklyHoroscopes() {
   try {

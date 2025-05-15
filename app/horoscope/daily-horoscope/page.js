@@ -3,7 +3,6 @@ import { generateDailyHoroscopes } from "@/app/lib/generatehoroscope";
 export default async function HoroscopePage() {
   // Server Action to generate or fetch today's horoscope
   const data = await generateDailyHoroscopes("today")
-const formattedDate = new Date(data.date).toLocaleDateString();
   if (!data || !data.horoscopes?.length) {
     return <div className="p-6 text-gray-500">No horoscope data found for today.</div>
   }
@@ -11,7 +10,7 @@ console.log(data)
   return (
     <div className="max-w-7xl mx-auto py:4 sm:py-32 gothic-a1-text">
   <h1 className="text-2xl sm:text-4xl font-bold text-yellow-700 mb-6 mt-6 text-center tracking-wide">
-    Daily Horoscope - <span className="text-black"> {formattedDate}</span>
+    Daily Horoscope - <span className="text-black"> {data.date}</span>
   </h1>
 <div className="max-w-xl mx-auto">
   <hr className="border border-dotted mb-8" />
