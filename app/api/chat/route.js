@@ -14,10 +14,17 @@ const getPlanetPositions = tool({
     year: z.string().describe("Year of birth"),
   }),
   execute: async ({ location, time, day, month, year }) => {
-    const url = `https://webapi.vedastro.org/api/Calculate/AllPlanetData/PlanetName/All/Location/${location}/Time/${time}/${day}/${month}/${year}/`;
+    const url = `https://webapi.vedastro.org/api/Calculate/AllPlanetData/PlanetName/All/Location/${location}/Time/${time}/${day}/${month}/${year}/+01:00/Ayanamsa/RAMAN/APIKey/f2s4dkWjJX0Z`;
+
     const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error("Failed to fetch planetary data from Vedastro");
+    }
+
     const data = await res.json();
-    return { positions: data.Payload };
+    return {
+      positions: data?.Payload?.AllPlanetData ?? [],
+    };
   },
 });
 
@@ -29,6 +36,12 @@ export async function POST(req) {
     messages,
     tools: { getPlanetPositions },
     toolChoice: "auto",
+    toolHandler: async (toolCall) => {
+      if (toolCall.tool.name === "getPlanetPositions") {
+        return await getPlanetPositions.execute(toolCall.args);
+      }
+      throw new Error("Unknown tool");
+    },
   });
 
   return result.toDataStreamResponse();
