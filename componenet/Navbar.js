@@ -18,8 +18,8 @@ const FloatingNavbar = () => {
 
   return (
     <>
-    <nav className="fixed top-0 left-0 w-full z-900 hidden sm:block  gothic-a1-text">
-      <div className="max-w-7xl mx-auto px-6 py-4 sm:mt-4 sm:rounded-full bg-white/90 backdrop-blur-sm border border-gray-600 shadow-xl">
+    <nav className="fixed top-0 left-0 w-full z-900 bg-yellow-50/90 hidden sm:block  gothic-a1-text backdrop-blur-sm shadow-sm ">
+      <div className="max-w-7xl mx-auto px-6 py-4   ">
         <div className="flex items-center justify-between">
           <NavLinks href="/">
             <Image src={"/astromee-logo.png"} alt='astromee-logo' height={200} width={200} />
@@ -27,7 +27,7 @@ const FloatingNavbar = () => {
           <div className="hidden md:flex space-x-6">
             <NavLinks href="/">Home</NavLinks>
             {/* <div className="relative group">
-              <button className="text-gray-700 hover:text-yellow-600">Horoscope ▽</button>
+              <button className="text-gray-900 hover:text-yellow-600">Horoscope ▽</button>
               <div className="absolute hidden group-hover:block bg-white shadow-md rounded-md top-8 left-0 w-48">
                 <NavLinks href="/service1"><span className="block px-4 py-2 text-black hover:text-yellow-600">Daily Horoscope</span></NavLinks>
                 <NavLinks href="/service2"><span className="block px-4 py-2 text-black hover:text-yellow-600">Yearly Horoscope</span></NavLinks>
@@ -36,7 +36,7 @@ const FloatingNavbar = () => {
  
             <NavLinks href="/numerology">Numerology</NavLinks>
             <div className="relative group">
-              <button className="text-gray-700 hover:text-yellow-600">Horoscope ▽</button>
+              <button className="text-gray-900 hover:text-yellow-600">Horoscope ▽</button>
               <div className="absolute hidden group-hover:block space-y-2 ">
                 <div className='bg-white shadow-md rounded-md top-10 left-0 w-48 p-3'>
                 <NavLinks href="/horoscope/daily-horoscope"> <span className='flex items-center gap-1'><Calendar className='h-4 w-4'/> Today Horoscope</span></NavLinks>
@@ -46,7 +46,7 @@ const FloatingNavbar = () => {
               </div>
             </div>
             <div className="relative group">
-              <button className="text-gray-700 hover:text-yellow-600">Free Calculators ▽</button>
+              <button className="text-gray-900 hover:text-yellow-600">Free Calculators ▽</button>
               <div className="absolute hidden group-hover:block ">
                 <div className='bg-white shadow-md rounded-md top-10 left-0 w-48 p-3'>
                 <NavLinks href="/flame-calculator"> <span className='flex items-center'><FlameIcon className='h-4 w-4'/> Flame Calculator</span></NavLinks>
@@ -55,7 +55,7 @@ const FloatingNavbar = () => {
               </div>
             </div>
             {/* <div className="relative group">
-              <button className="text-gray-700 hover:text-yellow-600">Free Readings ▽</button>
+              <button className="text-gray-900 hover:text-yellow-600">Free Readings ▽</button>
               <div className="absolute hidden group-hover:block bg-white shadow-md rounded-md top-8 left-0 w-48">
                 <NavLinks href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Palm Readings</span></NavLinks>
                 <NavLinks href="/"><span className="block px-4 py-2 text-black hover:text-yellow-600">Baby Name</span></NavLinks>

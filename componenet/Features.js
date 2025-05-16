@@ -1,42 +1,60 @@
-import { MessageCircleIcon, MessageSquare } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BinaryIcon, BotMessageSquareIcon, CalendarRangeIcon, FlameIcon, MessageSquare, PaintBucket, PaletteIcon } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
-export default function FeatureGrid() {
+export function DotBackgroundDemo() {
   const features = [
-    { icon: <MessageSquare className="h-7 w-7"/>, title: "Chat With Astrologers" },
-    { icon: "〰️", title: "Ease of use",},
-    { icon: "$", title: "Pricing like no other"},
-    { icon: "☁️", title: "100% Uptime guarantee"},
-    { icon: "↗️", title: "Multi-tenant Architecture" },
-    { icon: "❓", title: "24/7 Customer Support" },
-    { icon: "⚙️", title: "Money back guarantee" },
-    { icon: "❤️", title: "And everything else" },
-    { icon: "⚙️", title: "Money back guarantee"},
-    { icon: "❤️", title: "And everything else"}
+    { icon: <BotMessageSquareIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Chat With AI Astrologer", link:"/ai-chat" },
+    { icon: <BinaryIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Numerology", link:"/numerology" },
+    { icon: <CalendarRangeIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Daily Horoscope", link:"/horoscope/daily-horoscope" },
+    { icon: <FlameIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Flame Calculator", link:"/flame-calculator" },
+    { icon: <PaletteIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Lucky Color Finder", link:"/lucky-color" }
   ];
-
   return (
-    <div className="">
-    <section className="relative max-w-7xl mx-auto px-4 py-32">
+    <div
+      className="relative flex flex-col h-[50rem] w-full items-center justify-center bg-yellow-50 dark:bg-black gothic-a1-text">
+      <div
+        className={cn(
+          "absolute inset-0",
+          "[background-size:20px_20px]",
+          "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
+          "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+        )} />
+      {/* Radial gradient for the container to give a faded look */}
+      <div
+        className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
+        <div className="inline-block px-4 py-2 border border-yellow-500 rounded-full text-sm bg-yellow-500/50 backdrop-blur-sm mt-12">
+           <span className="text-black">Most Trusted Astrology Website!</span>
+          </div>
+        <h1 className="relative z-20 bg-gradient-to-b from-yellow-200 to-yellow-700 bg-clip-text text-4xl font-bold text-transparent sm:text-7xl">
+        Astrology For Mee
+      </h1>
+      <p className="mt-2 text-lg text-gray-6=700  gothic-a1-text">
+          Unlock the mysteries of your future with AI astrology—where science meets the stars.
+          </p>
+   <section className="relative max-w-7xl mx-auto px-4 py-12">
       {/* Dotted Background Layer */}
       <div className="absolute inset-0 "/>
     
       {/* Foreground Content */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6">
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5">
         {features.map((item, idx) => {
-          const isFirstCol = idx % 6 === 0;
-          const isLastCol = (idx + 1) % 6 === 0;
+          const isFirstCol = idx % 5 === 0;
+          const isLastCol = (idx + 1) % 5 === 0;
 
           return (
-            <div
+            <Link
+              href={item.link}
               key={idx}
-              className={`p-6 border-yellow-700 border-dashed text-center
+              className={`p-6 border-yellow-600 border-dashed text-center flex flex-col justify-center items-center cursor-pointer
                 ${!isFirstCol ? 'border-l' : ''} 
-                ${idx < 8 ? 'border-b' : ''} 
+                ${idx < 5 ? 'border-b' : ''} 
                 ${!isLastCol ? 'border-r' : ''}`}
             >
-              <div className="text-4xl mb-4">{item.icon}</div>
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-            </div>
+              <div className="text-7xl mb-4 text-yellow-700 ">{item.icon}</div>
+              <h3 className=" font-semibold mb-2">{item.title}</h3>
+            </Link>
           );
         })}
       </div>
@@ -44,3 +62,5 @@ export default function FeatureGrid() {
     </div>
   );
 }
+
+
