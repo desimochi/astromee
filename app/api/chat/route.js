@@ -85,6 +85,7 @@ export async function POST(req) {
   getPlanetPosition,
      },
     toolChoice: "auto",
+    maxSteps:3,
     toolHandler: async (toolCall) => {
     switch (toolCall.tool.name) {
     case "gethoroscope":
