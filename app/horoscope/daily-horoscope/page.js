@@ -1,4 +1,5 @@
 import { generateDailyHoroscopes } from "@/app/lib/generatehoroscope";
+import DotBack from "@/componenet/ui/DotBack";
 
 export default async function HoroscopePage() {
   // Server Action to generate or fetch today's horoscope
@@ -8,8 +9,9 @@ export default async function HoroscopePage() {
   }
 console.log(data)
   return (
-    <div className="max-w-7xl mx-auto py:4 sm:py-32 gothic-a1-text">
-  <h1 className="text-2xl sm:text-4xl font-bold text-yellow-700 mb-6 mt-6 text-center tracking-wide">
+    <DotBack>
+    <div className="max-w-7xl mx-auto py:4 sm:py-32 gothic-a1-text z-21">
+  <h1 className="text-center text-4xl font-bold mb-4 bg-gradient-to-b from-yellow-200 to-yellow-700 bg-clip-text text-transparent">
     Daily Horoscope - <span className="text-black"> {data.date}</span>
   </h1>
 <div className="max-w-xl mx-auto">
@@ -28,5 +30,6 @@ console.log(data)
     ))}
   </div>
 </div>
+</DotBack>
   )
 }

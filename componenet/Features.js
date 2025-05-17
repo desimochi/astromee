@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { BinaryIcon, BotMessageSquareIcon, CalendarRangeIcon, FlameIcon, MessageSquare, PaintBucket, PaletteIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -9,7 +10,8 @@ export function DotBackgroundDemo() {
     { icon: <BinaryIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Numerology", link:"/numerology" },
     { icon: <CalendarRangeIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Daily Horoscope", link:"/horoscope/daily-horoscope" },
     { icon: <FlameIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Flame Calculator", link:"/flame-calculator" },
-    { icon: <PaletteIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Lucky Color Finder", link:"/lucky-color" }
+    { icon: <PaletteIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Lucky Color Finder", link:"/lucky-color" },   
+    { icon: <Image src={"/birth-charts.png"} height={80} width={80} alt="birth chart" className="hover:rotate-12 transition-transform" />, title: "Birth Chart", link:"/birth-chart" },
   ];
   return (
     <div
@@ -31,6 +33,9 @@ export function DotBackgroundDemo() {
         Astrology For Mee
       </h1>
       <p className="mt-2 text-lg text-gray-6=700  gothic-a1-text">
+
+
+
           Unlock the mysteries of your future with AI astrology—where science meets the stars.
           </p>
    <section className="relative max-w-7xl mx-auto px-4 py-12">

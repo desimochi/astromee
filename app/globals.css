@@ -129,7 +129,17 @@
     left: 0%;
   }
 }
+.typing-dots .dot {
+  animation: blink 1.2s infinite;
+}
+.typing-dots .dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots .dot:nth-child(3) { animation-delay: 0.4s; }
 
+@keyframes blink {
+  0%, 20% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
 .animate-star {
   animation: 'star 1.5s ease-in-out infinite';
 }

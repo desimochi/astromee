@@ -1,6 +1,6 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
+
 import { connectToDatabase } from './mongodb'
 const zodiacSigns = [
   'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo',
@@ -58,7 +58,6 @@ export async function generateDailyHoroscopes() {
       horoscopes,
     })
 
-    revalidatePath('/daily-horoscope') // Update this if needed
 
     return {
       _id: result.insertedId.toString(),
@@ -114,7 +113,6 @@ export async function generateWeeklyHoroscopes() {
       horoscopes, // array of { sign, content }
     })
 
-    revalidatePath('/horoscope')
 
     return {
       _id: result.insertedId.toString(),
@@ -182,7 +180,6 @@ export async function generateMonthlyHoroscopes() {
       horoscopes, // array of { sign, content }
     })
 
-    revalidatePath('/weekly-horoscope')
 
     return {
       _id: result.insertedId.toString(),

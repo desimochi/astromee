@@ -17,17 +17,16 @@ export default function FlamesPage() {
   };
 
   return (
-    <div className="bg-yellow-100/50 bg-clip-padding backdrop-filter  backdrop-blur backdrop-saturate-100 backdrop-contrast-100 p-12 max-w-xl mx-auto rounded-lg shadow-lg">
-      <h1 className="inline-block px-4 text-center-2 mb-2 font-bold border border-yellow-500 rounded-full text-sm bg-yellow-500/50 backdrop-blur-sm">🔥 FLAMES Calculator 🔥</h1>
-      <p className='font-bold'>Enter two names to find out your relationship!</p>
-      <hr className='w-[200px] border border-dotted mt-3 mb-6' />
+    <div className="bg-yellow-100/50 bg-clip-padding backdrop-filter  backdrop-blur backdrop-saturate-100 backdrop-contrast-100 p-12 max-w-xl mx-auto rounded-lg shadow-lg border-yellow-300">
+      <p className='font-bold text-yellow-700 text-xl'>Enter two names to find out your relationship!</p>
+      <hr className='w-[200px] border border-yellow-700 border-dotted mt-4 mb-6' />
       <form onSubmit={handleSubmit} className="w-full max-w-md">
         <input
           type="text"
           placeholder="Enter First Person Name"
           value={name1}
           onChange={(e) => setName1(e.target.value)}
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full border border-yellow-700 mt-2 rounded p-2 text-yellow-700"
           required
         />
         <input
@@ -35,10 +34,10 @@ export default function FlamesPage() {
           placeholder="Enter Second Person Name"
           value={name2}
           onChange={(e) => setName2(e.target.value)}
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full border border-yellow-700 mt-4 rounded p-2 text-yellow-700"
           required
         />
-        <button type="submit" className="w-fit px-5 mt-2 flex justify-center gap-1 bg-yellow-700 text-yellow-100 font-bold py-2 rounded hover:bg-yellow-600 cursor-pointer">
+        <button type="submit" className="w-fit px-5 mt-5 flex justify-center gap-1 bg-yellow-700 text-yellow-100 font-bold py-2 rounded hover:bg-yellow-600 cursor-pointer">
           <FlameIcon className='h-4 w-4'/> Calculate
         </button>
       </form>

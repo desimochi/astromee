@@ -6,6 +6,8 @@ import { useState, useRef, useEffect } from "react";
 import { authFetch } from "../authfetch";
 import Image from "next/image";
 import AstroLoader from "@/componenet/Loader";
+import { cn } from "@/lib/utils";
+import DotBack from "@/componenet/ui/DotBack";
 
 export default function Page(){
     const [name, setName] = useState('');
@@ -41,21 +43,23 @@ export default function Page(){
     console.log(result)
     return(
         <>
-        <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-white gothic-a1-text">
+        <DotBack>
+        <div className="flex flex-col items-center justify-center min-h-screen py-2 gothic-a1-text z-21">
             <div className="inline-block px-4 text-center-2 mb-3 border border-yellow-500 rounded-full text-sm bg-yellow-500/50 backdrop-blur-sm">
         <span className="text-black">Number Tells Story</span>
           </div>
-            <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 bg-clip-text text-transparent">Numerology</h1>
+            <h1 className="text-6xl font-bold mb-4 bg-gradient-to-b from-yellow-200 to-yellow-700 bg-clip-text text-transparent">Numerology</h1>
             <p className="text-lg text-gray-700 mb-8">A person {`'`}s life can be predicted through his name spellings. From Mantra Shastra, uses vibration frequency of alphabets.</p>
-            <div className="w-[360px] sm:w-[400px] bg-yellow-100 bg-clip-padding backdrop-filter backdrop-blur backdrop-saturate-100 backdrop-contrast-100 py-6 px-10 rounded-lg shadow-lg">
+            <div className="w-[360px] sm:w-[400px] bg-yellow-50 bg-clip-padding backdrop-filter backdrop-blur backdrop-saturate-100 backdrop-contrast-100 py-6 px-10 rounded-lg shadow-lg border border-amber-100">
                 <TypingHeader/>
-              <input type="text" placeholder="Enter your name" name="name" value={name} onChange={(e)=>setName(e.target.value)} className="w-full p-2 mb-4 mt-2 border border-yellow-700 text-yellow-700 bg-yellow-100 rounded" />
-              <button onClick={handleSubmit} disabled={loading} className=" px-6 py-2 mt-4 bg-yellow-700 text-yellow-100 font-semibold rounded-full overflow-hidden cursor-pointer hover:bg-yellow-600 hover:text-white transition duration-300 ease-in-out shadow-lg flex items-center justify-center">
+              <input type="text" placeholder="Enter your name" name="name" value={name} onChange={(e)=>setName(e.target.value)} className="w-full p-2 mb-4 mt-2 border border-yellow-700 text-yellow-700 bg-yellow-50 rounded" />
+              <button onClick={handleSubmit} disabled={loading} className=" px-6 py-2 mt-4 bg-yellow-700 text-yellow-50 font-semibold rounded-full overflow-hidden cursor-pointer hover:bg-yellow-600 hover:text-white transition duration-300 ease-in-out shadow-lg flex items-center justify-center">
   {loading? 'Submitting...' : 'Submit'} <ArrowUpRight className="h-4 w-4 hover:h-6 hover:w-6" />
 </button>
             </div>
           
         </div>
+        </DotBack>
         <div ref={resultRef} className=" inset-0 z-0 pointer-events-none">
         {loading && (
             <div className="max-w-7xl mx-auto pt-20 pb-20 px-4 max-h-screen">
@@ -169,7 +173,6 @@ export default function Page(){
   </div>
 )}
 </div>
-
         </>
     )
 }

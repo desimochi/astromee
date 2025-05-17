@@ -1,4 +1,5 @@
 import { generateMonthlyHoroscopes } from "@/app/lib/generatehoroscope";
+import DotBack from "@/componenet/ui/DotBack";
 
 export default async function HoroscopePage() {
   // Server Action to generate or fetch today's horoscope
@@ -8,7 +9,8 @@ export default async function HoroscopePage() {
   }
 console.log(data)
   return (
-    <div className="max-w-7xl mx-auto py:4 sm:py-32 gothic-a1-text">
+    <DotBack>
+    <div className="max-w-7xl mx-auto py:4 sm:py-32 gothic-a1-text z-21">
   <h1 className="text-2xl sm:text-4xl font-bold text-yellow-700 mb-6 mt-6 text-center tracking-wide">
     Monthly Horoscope - {data.month}<span className="text-black"> </span>
   </h1>
@@ -38,5 +40,6 @@ console.log(data)
     ))}
   </div>
 </div>
+</DotBack>
   )
 }

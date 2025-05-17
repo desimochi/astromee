@@ -8,15 +8,14 @@ const gethoroscope = tool({
   name: "gethoroscope",
   description: "Get horoscope using birth location, time, and date",
   parameters: z.object({
-    location: z.string().describe("Birth location (city name)"),
+    location: z.string().describe("Birth location (having cityname,state name, country name)"),
     time: z.string().describe("Birth time in HH:MM format"),
     day: z.string().describe("Day of birth"),
     month: z.string().describe("Month of birth"),
     year: z.string().describe("Year of birth"),
   }),
   execute: async ({ location, time, day, month, year }) => {
-  const encodedLocation = encodeURIComponent(location);
-  const url = `https://api.vedastro.org/api/Calculate/HoroscopePredictions/Location/${encodedLocation}/Time/${time}/${day}/${month}/${year}/+00:00/Ayanamsa/RAMAN`;
+  const url = `https://api.vedastro.org/api/Calculate/HoroscopePredictions/Location/${location}/Time/${time}/${day}/${month}/${year}/+05:30/SortByWeight/True/Ayanamsa/RAMAN`;
 
   const res = await fetch(url);
   if (!res.ok) {
@@ -24,13 +23,16 @@ const gethoroscope = tool({
   }
 
   const raw = await res.json();
-  console.log("tools", raw)
+  
   const insights = (raw?.Payload ?? []).map((item) => ({
     tag: item.Tags?.[0] ?? "General",
     name: item.Name,
     description: item.Description?.trim() ?? "No description",
+    planets:item.RelatedBody?.Planets[0] ??" ",
+    houses:item.RelatedBody?.Houses ??" ",
+    weight:item.Weight ?? "00.00"
   }));
-
+console.log("tools", insights, url)
   // ✅ For LLM memory or response
   return { insights };
 },
@@ -38,17 +40,16 @@ const gethoroscope = tool({
 });
 const getPlanetPosition = tool({
   name: "getPlanetPosition",
-  description: "Get getPlanetPosition using location, current time, and date",
+  description: "Get planet position using birth location, time, and date",
   parameters: z.object({
-    location: z.string().describe("current location (city name)"),
-    time: z.string().describe("current time in HH:MM format"),
-    day: z.string().describe("current date"),
-    month: z.string().describe("current month"),
-    year: z.string().describe("current year"),
+    location: z.string().describe("Birth location (having cityname,state name, country name)"),
+    time: z.string().describe("Birth time in HH:MM format"),
+    day: z.string().describe("Day of birth"),
+    month: z.string().describe("Month of birth"),
+    year: z.string().describe("Year of birth"),
   }),
   execute: async ({ location, time, day, month, year }) => {
-  const encodedLocation = encodeURIComponent(location);
-  const url = `https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/All/Location/${encodedLocation}/Time/${time}/${day}/${month}/${year}/+00:00/Ayanamsa/RAMAN`;
+  const url = `https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/All/Location/${location}/Time/${time}/${day}/${month}/${year}/+00:00/Ayanamsa/RAMAN`;
 
   const res = await fetch(url);
   if (!res.ok) {
