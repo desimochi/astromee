@@ -43,12 +43,12 @@ const DatePicker = ({selectedDate, setSelectedDate}) => {
     format(new Date(2000, i), 'MMMM')
   );
 
-  const yearOptions = Array.from({ length: 50 }, (_, i) => 1980 + i);
+  const yearOptions = Array.from({ length: 100 }, (_, i) => 1950 + i);
   console.log(selectedDate)
 
   const renderHeader = () => {
     return (
-      <div className="flex justify-between items-center p-2 bg-gray-200">
+      <div className=" flex justify-between items-center p-2 bg-gray-200 z-21">
         <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}>
           &#8592;
         </button>

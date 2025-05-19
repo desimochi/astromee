@@ -1,6 +1,6 @@
 export default function AstroLoader() {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-white">
+      <div className="flex flex-col items-center justify-center ">
         {/* Rotating circular zodiac */}
         <div className="relative w-40 h-40 animate-spin-slow rounded-full border-[6px] border-dashed border-yellow-400 shadow-xl">
           {/* Glowing center orb */}

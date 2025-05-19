@@ -161,7 +161,16 @@
 .animate-shoot {
   animation: 'shootingstar 1.5s ease-in-out infinite';
 }
-
+.svg-wrapper svg {
+  width: 500px;
+  height: 500px;
+}
+@media (max-width: 640px) { /* Tailwind's sm breakpoint is 640px */
+  .svg-wrapper svg {
+    width: 360px;
+    height: 360px; /* adjust height too if needed */
+  }
+}
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
