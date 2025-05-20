@@ -16,7 +16,7 @@ export default function Page(){
         <span className="text-black">Find Your Compatiblity</span>
           </div>
                 <h1 className="text-6xl font-extrabold mb-4 bg-gradient-to-b from-yellow-200 to-yellow-700 bg-clip-text text-transparent text-center">Match Maker</h1>
-                <p className="text-center">Check compatibility between two people. Easily predict your relationship's future with astrology calculation.</p>
+                <p className="text-center">Check compatibility between two people. Easily predict your relationship&asop;s future with astrology calculation.</p>
             <div className="w-full">
                 <FormAstro />
             </div>
