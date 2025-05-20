@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { BinaryIcon, BotMessageSquareIcon, CalendarRangeIcon, FlameIcon, MessageSquare, PaintBucket, PaletteIcon } from "lucide-react";
+import { BinaryIcon, BotMessageSquareIcon, CalendarRangeIcon, FlameIcon, HeartHandshakeIcon, MessageSquare, PaintBucket, PaletteIcon, ScanHeart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +11,8 @@ export function DotBackgroundDemo() {
     { icon: <CalendarRangeIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Daily Horoscope", link:"/horoscope/daily-horoscope" },
     { icon: <FlameIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Flame Calculator", link:"/flame-calculator" },
     { icon: <PaletteIcon className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Lucky Color Finder", link:"/lucky-color" },   
-    { icon: <Image src={"/birth-charts.png"} height={80} width={80} alt="birth chart" className="hover:rotate-12 transition-transform" />, title: "Birth Chart", link:"/birth-chart" },
+    { icon: <Image src={"/birth-charts.png"} height={70} width={70} alt="birth chart" className="hover:rotate-12 transition-transform" />, title: "Birth Chart", link:"/birth-chart" },
+    { icon: <ScanHeart className="h-18 w-18 hover:scale-110 hover:rotate-12 transition-transform" strokeWidth={1.5}/>, title: "Match Checker", link:"/match-checker" },
   ];
   return (
     <div

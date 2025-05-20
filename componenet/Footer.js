@@ -1,8 +1,15 @@
+"use client"
 import { FacebookIcon, InstagramIcon, TwitchIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+   const pathname = usePathname()
+     const isLoginPage = pathname.startsWith('/login');
+    if(isLoginPage){
+      return null;
+    }
   return (
     <footer className="bg-[#2e2e2e] text-white px-6 py-10">
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">

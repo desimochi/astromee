@@ -4,9 +4,15 @@ import BottomNav from './BottamNav';
 import Image from 'next/image';
 import { Calendar, Calendar1, FlameIcon, PaintBucketIcon } from 'lucide-react';
 import NavLinks from './NavLink';
+import { usePathname } from 'next/navigation';
 const FloatingNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const pathname = usePathname()
+   const isLoginPage = pathname.startsWith('/login');
+  if(isLoginPage){
+    return null;
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

@@ -49,7 +49,7 @@ const getPlanetPosition = tool({
     year: z.string().describe("Year of birth"),
   }),
   execute: async ({ location, time, day, month, year }) => {
-  const url = `https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/All/Location/${location}/Time/${time}/${day}/${month}/${year}/+00:00/Ayanamsa/RAMAN`;
+  const url = `https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/All/Location/${location}/Time/${time}/${day}/${month}/${year}/+05:30/Ayanamsa/RAMAN`;
 
   const res = await fetch(url);
   if (!res.ok) {
@@ -73,6 +73,7 @@ console.log("planet",  planets)
 },
 
 });
+
 
 
 export async function POST(req) {
