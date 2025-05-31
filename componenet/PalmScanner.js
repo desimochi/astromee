@@ -17,7 +17,7 @@ export default function PalmScanner(){
 
         {/* Scanning Text */}
         <div className="absolute bottom-2 w-full text-center text-black-300 text-xs font-mono">
-          SCANNING...
+          SCANNING....
         </div>
       </div>
     </div>
