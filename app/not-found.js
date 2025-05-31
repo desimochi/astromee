@@ -9,8 +9,8 @@ export default function NotFound(){
 
       <div className="text-center z-10 p-8 max-w-xl">
         <h1 className="text-7xl font-bold mb-4">404</h1>
-        <p className="text-2xl mb-4">You’ve drifted off the cosmic path...</p>
-        <p className="mb-8 text-lg">The stars couldn't find this page in your horoscope.</p>
+        <p className="text-2xl mb-4">You&apos;ve drifted off the cosmic path...</p>
+        <p className="mb-8 text-lg">The stars couldn&apos;t find this page in your horoscope.</p>
 
         <Link href="/" >
           <div className="inline-block px-6 py-3 bg-yellow-400 text-black font-semibold rounded-xl shadow-lg hover:bg-yellow-300 transition duration-300">
