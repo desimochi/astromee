@@ -9,7 +9,7 @@ async function isPalmImage(imageUrl) {
   const schema = z.object({
     isImage:z.boolean()
   })
-  const prompt = `You are an image classifier that only checks whether the image : ${imageUrl} contains a clearly visible palm for palm reading. Return a JSON object of Does this image contain a clear palm suitable for palm reading? Answer true or false`
+  const prompt = `You are an image classifier that only checks whether the image : ${imageUrl} contains a human palm image or not. Return a JSON object of Does this image contain a human palm image suitable for palm reading? Answer true or false`
  const result = await generateObject({
     model: openai('gpt-4o-2024-08-06', { structuredOutputs: true }),
     schemaName: 'PalmImage',
@@ -28,7 +28,7 @@ async function readPalmImage(imageUrl) {
     health: z.string(),
   });
 
-  const prompt = `You are a palm reader. Analyze the hand in this image: ${imageUrl}. Return a JSON object describing the person's love life, career, and health. Use the traditional Palm Reading Logics and must provide the information such as time of marriage, death, and how much educaiton and career insights;`;
+  const prompt = `You are a palm reader. Analyze the hand in this image: ${imageUrl}. Return a JSON object describing the person's love life, career, and health. Use the traditional Palm Reading Logics and must provide the information such as time of marriage, death, and how much educaiton and career insights. Give the in details analysis with logics;`;
 
   const result = await generateObject({
     model: openai('gpt-4o-2024-08-06', { structuredOutputs: true }),
