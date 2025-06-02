@@ -9,7 +9,7 @@ async function isPalmImage(imageUrl) {
   const schema = z.object({
     isImage:z.boolean()
   })
-  const prompt = `You are an image classifier that only checks whether the image : ${imageUrl} contains a human palm image or not. Return a JSON object of Does this image contain a human palm image suitable for palm reading? Answer true or false`
+  const prompt = `You are an image classifier that only checks whether the image : ${imageUrl} contains a human palm image or not. Ignore the background just focus on human palm only and then Return a JSON object of Does this image contain a human palm image suitable for palm reading? Answer true or false`
  const result = await generateObject({
     model: openai('gpt-4o-2024-08-06', { structuredOutputs: true }),
     schemaName: 'PalmImage',
