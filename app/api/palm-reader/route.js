@@ -15,7 +15,7 @@ Ignore the background, lighting, and small imperfections.
 Focus only on whether a hand with palm visible is present, even if not perfect. 
 Reply only with JSON: { "isImage": true } or { "isImage": false }`;
  const result = await generateObject({
-    model: openai('gpt-4o-2024-08-06', { structuredOutputs: true }),
+    model: openai('gpt-4o', { structuredOutputs: true }),
     schemaName: 'PalmImage',
     schemaDescription: 'Check PalmImag is Real or not',
     schema,
