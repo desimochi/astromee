@@ -27,18 +27,6 @@ export async function generateDailyHoroscopes() {
     const db = await connectToDatabase()
     const collection = db.collection('daily_horoscopes')
 
-    // Check if data already exists for this date
-    const existing = await collection.findOne({ date: formattedDate })
-
-    if (existing) {
-      return {
-        _id: existing._id.toString(),
-        ...existing,
-      }
-    }
-
-    const horoscopes = []
-
     for (const sign of zodiacSigns) {
       const res = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${sign}&day=TODAY`)
 
@@ -142,15 +130,6 @@ export async function generateMonthlyHoroscopes() {
     const collection = db.collection('monthly_horoscopes')
 
     // Check if today's data already exists
-    const existing = await collection.findOne({ month: { $gte: month } })
-
-    if (existing) {
-      return {
-        _id: existing._id.toString(),
-        ...existing,
-      }
-    }
-
     const horoscopes = []
 
     for (const sign of zodiacSigns) {

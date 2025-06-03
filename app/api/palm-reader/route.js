@@ -32,7 +32,12 @@ async function readPalmImage(imageUrl) {
     health: z.string(),
   });
 
-  const prompt = `You are a palm reader. Analyze the hand in this image: ${imageUrl}. Return a JSON object describing the person's love life, career, and health. Use the traditional Palm Reading Logics and must provide the information such as time of marriage, death, and how much educaiton and career insights. Give the in details analysis with logics;`;
+  const prompt = `You are a palm reader. Analyze the hand in this image: ${imageUrl}. 
+  Use the curve and cuts in the lines to personalised the reuslt and Return a JSON object describing the person's love life, career, and health. 
+  Use the traditional Palm Reading Logics and must provide the information such as time of marriage, death, and how much educaiton and career insights. 
+  Dont give time frame like late 20s if early 30s use the rnage like 27-29 and so. Also say where is the visible cut on the lines that impacting. 
+  You are a most experienced palm reading astrologer so perform like this;
+  **Important - Always provide the infomation behind the predicions so it will look authentic**`;
 
   const result = await generateObject({
     model: openai('gpt-4o-2024-08-06', { structuredOutputs: true }),

@@ -63,8 +63,8 @@ const data = await res.json()
 <p className="text-center text-sm p-2 sm:text-sm ">Discover your unique astrological insights with your palm as our palm reader scan your palm lines and provides the important life events information.</p>
           </div>
     
-      <div className='flex max-w-7xl mx-auto gap-4 items-center'>
-      <div className='w-1/2'>
+      <div className='flex flex-col sm:flex-row max-w-7xl mx-auto gap-4 items-center p-2'>
+      <div className='w-full sm:w-1/2'>
       <div className='px-2 py-4'>
         <label className='font-bold mb-2'>Upload Palm Image </label>
       <input
@@ -93,7 +93,7 @@ const data = await res.json()
 
      
       </div>
-      <div className='w-1/2'>
+      <div className='w-full sm:w-1/2'>
        {loading ? <PalmScanner/>  : 
        prediction ?  (
         <div className="mt-6 p-4 border border-yellow-600 rounded shadow">

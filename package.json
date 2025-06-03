@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.3.22",
+    "@mediapipe/camera_utils": "^0.3.1675466862",
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "@mediapipe/hands": "^0.4.1675469240",
     "@prisma/client": "^6.7.0",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",

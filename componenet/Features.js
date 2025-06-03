@@ -17,7 +17,7 @@ export function DotBackgroundDemo() {
   ];
   return (
     <div
-      className="relative flex flex-col h-[50rem] w-full items-center justify-center bg-yellow-50 dark:bg-black gothic-a1-text">
+      className="relative flex flex-col h-fit w-full py-12 items-center justify-center bg-yellow-50 dark:bg-black gothic-a1-text">
       <div
         className={cn(
           "absolute inset-0",
@@ -34,7 +34,7 @@ export function DotBackgroundDemo() {
         <h1 className="relative z-20 bg-gradient-to-b from-yellow-200 to-yellow-700 bg-clip-text text-4xl font-bold text-transparent sm:text-7xl">
         Astrology For Mee
       </h1>
-      <p className="mt-2 text-lg text-gray-6=700  gothic-a1-text">
+      <p className="mt-2 text-lg text-gray-6=700 p-2  gothic-a1-text">
 
 
 
