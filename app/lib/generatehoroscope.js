@@ -23,10 +23,10 @@ function getISTFormattedDate() {
 export async function generateDailyHoroscopes() {
   try {
     const formattedDate = getISTFormattedDate()
-
+    console.log(formattedDate)
     const db = await connectToDatabase()
     const collection = db.collection('daily_horoscopes')
-
+    let horoscopes = []
     for (const sign of zodiacSigns) {
       const res = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${sign}&day=TODAY`)
 
