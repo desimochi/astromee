@@ -7,7 +7,6 @@ export default async function HoroscopePage() {
   if (!data || !data.horoscopes?.length) {
     return <div className="p-6 text-gray-500">No horoscope data found for today.</div>
   }
-console.log(data)
   return (
     <DotBack>
     <div className="max-w-7xl mx-auto py:4 sm:py-32 gothic-a1-text z-21">
