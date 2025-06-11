@@ -21,7 +21,7 @@ const handleFormChange = (e) => {
 };
 const messagesContainerRef = useRef(null);
 
-  const mes = "Hi I am Aishwarya! Your Astrology Expert Kindly Enter Your Name"
+  const mes = "Hi I am Aishwarya! An Astrology Expert Kindly Enter Your Name"
   const [show , setShow] = useState(true)
   const {
     messages,
